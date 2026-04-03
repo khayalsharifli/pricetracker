@@ -21,4 +21,6 @@ dependencyResolutionManagement {
 
 rootProject.name = "pricetracker"
 include(":app")
- 
+include(":domain")
+include(":data")
+include(":presentation")
