@@ -28,6 +28,30 @@ import az.khayalsharifli.domain.model.PriceChange
 import az.khayalsharifli.presentation.ui.theme.PriceGreen
 import az.khayalsharifli.presentation.ui.theme.PriceRed
 import kotlinx.coroutines.delay
+import androidx.compose.ui.tooling.preview.PreviewLightDark
+import az.khayalsharifli.presentation.ui.theme.PriceTrackerTheme
+
+@PreviewLightDark
+@Composable
+private fun PriceCardUpPreview() {
+    PriceTrackerTheme {
+        PriceCardComposable(
+            formattedPrice = "$185.92",
+            priceChange = PriceChange.UP
+        )
+    }
+}
+
+@PreviewLightDark
+@Composable
+private fun PriceCardDownPreview() {
+    PriceTrackerTheme {
+        PriceCardComposable(
+            formattedPrice = "$141.50",
+            priceChange = PriceChange.DOWN
+        )
+    }
+}
 
 @Composable
 internal fun PriceCardComposable(

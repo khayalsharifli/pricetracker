@@ -10,6 +10,27 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import az.khayalsharifli.presentation.base.read
 import az.khayalsharifli.presentation.ui.detail.mvi.DetailScreenState
+import az.khayalsharifli.domain.model.PriceChange
+import az.khayalsharifli.presentation.ui.theme.PriceTrackerTheme
+import androidx.compose.ui.tooling.preview.PreviewLightDark
+
+@PreviewLightDark
+@Composable
+private fun DetailBodyPreview() {
+    PriceTrackerTheme {
+        DetailBody(
+            stateReader = {
+                DetailScreenState(
+                    symbol = "AAPL",
+                    name = "Apple Inc.",
+                    formattedPrice = "$185.92",
+                    priceChange = PriceChange.UP,
+                    description = "Apple Inc. designs, manufactures, and markets smartphones, personal computers, tablets, wearables, and accessories worldwide."
+                )
+            }
+        )
+    }
+}
 
 @Composable
 internal fun DetailBody(
