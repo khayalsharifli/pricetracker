@@ -31,28 +31,6 @@ import kotlinx.coroutines.delay
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import az.khayalsharifli.presentation.ui.theme.PriceTrackerTheme
 
-@PreviewLightDark
-@Composable
-private fun PriceCardUpPreview() {
-    PriceTrackerTheme {
-        PriceCardComposable(
-            formattedPrice = "$185.92",
-            priceChange = PriceChange.UP
-        )
-    }
-}
-
-@PreviewLightDark
-@Composable
-private fun PriceCardDownPreview() {
-    PriceTrackerTheme {
-        PriceCardComposable(
-            formattedPrice = "$141.50",
-            priceChange = PriceChange.DOWN
-        )
-    }
-}
-
 @Composable
 internal fun PriceCardComposable(
     formattedPrice: String,
@@ -116,4 +94,26 @@ private fun PriceChangeArrow(priceChange: PriceChange) {
         fontWeight = FontWeight.Bold,
         color = color
     )
+}
+
+@PreviewLightDark
+@Composable
+private fun PriceCardUpPreview() {
+    PriceTrackerTheme {
+        PriceCardComposable(
+            formattedPrice = "$185.92",
+            priceChange = PriceChange.UP
+        )
+    }
+}
+
+@PreviewLightDark
+@Composable
+private fun PriceCardDownPreview() {
+    PriceTrackerTheme {
+        PriceCardComposable(
+            formattedPrice = "$141.50",
+            priceChange = PriceChange.DOWN
+        )
+    }
 }
