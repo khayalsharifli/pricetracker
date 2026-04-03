@@ -36,42 +36,6 @@ import kotlinx.coroutines.delay
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import az.khayalsharifli.presentation.ui.theme.PriceTrackerTheme
 
-@PreviewLightDark
-@Composable
-private fun StockRowUpPreview() {
-    PriceTrackerTheme {
-        StockRowComposable(
-            stateReader = {
-                StockRowState(
-                    symbol = "AAPL",
-                    name = "Apple Inc.",
-                    formattedPrice = "$185.92",
-                    priceChange = PriceChange.UP
-                )
-            },
-            onClick = {}
-        )
-    }
-}
-
-@PreviewLightDark
-@Composable
-private fun StockRowDownPreview() {
-    PriceTrackerTheme {
-        StockRowComposable(
-            stateReader = {
-                StockRowState(
-                    symbol = "GOOGL",
-                    name = "Alphabet Inc.",
-                    formattedPrice = "$141.50",
-                    priceChange = PriceChange.DOWN
-                )
-            },
-            onClick = {}
-        )
-    }
-}
-
 @Composable
 internal fun StockRowComposable(
     stateReader: () -> StockRowState,
@@ -142,5 +106,42 @@ internal fun StockRowComposable(
                 PriceChangeIndicatorComposable(priceChange = priceChange)
             }
         }
+    }
+}
+
+
+@PreviewLightDark
+@Composable
+private fun StockRowUpPreview() {
+    PriceTrackerTheme {
+        StockRowComposable(
+            stateReader = {
+                StockRowState(
+                    symbol = "AAPL",
+                    name = "Apple Inc.",
+                    formattedPrice = "$185.92",
+                    priceChange = PriceChange.UP
+                )
+            },
+            onClick = {}
+        )
+    }
+}
+
+@PreviewLightDark
+@Composable
+private fun StockRowDownPreview() {
+    PriceTrackerTheme {
+        StockRowComposable(
+            stateReader = {
+                StockRowState(
+                    symbol = "GOOGL",
+                    name = "Alphabet Inc.",
+                    formattedPrice = "$141.50",
+                    priceChange = PriceChange.DOWN
+                )
+            },
+            onClick = {}
+        )
     }
 }

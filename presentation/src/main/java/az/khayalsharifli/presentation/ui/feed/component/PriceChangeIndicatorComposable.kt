@@ -10,6 +10,23 @@ import az.khayalsharifli.presentation.ui.theme.PriceRed
 import az.khayalsharifli.presentation.ui.theme.PriceTrackerTheme
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 
+@Composable
+internal fun PriceChangeIndicatorComposable(
+    priceChange: PriceChange
+) {
+    val (text, color) = when (priceChange) {
+        PriceChange.UP -> "\u2191" to PriceGreen
+        PriceChange.DOWN -> "\u2193" to PriceRed
+        PriceChange.NONE -> "-" to MaterialTheme.colorScheme.onSurfaceVariant
+    }
+    Text(
+        text = text,
+        color = color,
+        style = MaterialTheme.typography.titleLarge,
+        fontWeight = FontWeight.Bold
+    )
+}
+
 @PreviewLightDark
 @Composable
 private fun PriceChangeIndicatorUpPreview() {
@@ -32,21 +49,4 @@ private fun PriceChangeIndicatorNonePreview() {
     PriceTrackerTheme {
         PriceChangeIndicatorComposable(priceChange = PriceChange.NONE)
     }
-}
-
-@Composable
-internal fun PriceChangeIndicatorComposable(
-    priceChange: PriceChange
-) {
-    val (text, color) = when (priceChange) {
-        PriceChange.UP -> "\u2191" to PriceGreen
-        PriceChange.DOWN -> "\u2193" to PriceRed
-        PriceChange.NONE -> "-" to MaterialTheme.colorScheme.onSurfaceVariant
-    }
-    Text(
-        text = text,
-        color = color,
-        style = MaterialTheme.typography.titleLarge,
-        fontWeight = FontWeight.Bold
-    )
 }

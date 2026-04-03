@@ -16,6 +16,33 @@ import az.khayalsharifli.presentation.ui.theme.PriceTrackerTheme
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import kotlinx.collections.immutable.persistentListOf
 
+@Composable
+internal fun StockList(
+    stateReader: () -> FeedScreenState,
+    onStockClick: (String) -> Unit,
+    modifier: Modifier = Modifier
+) {
+    val stocks = stateReader.read { stocks }
+
+    LazyColumn(
+        modifier = modifier,
+        verticalArrangement = Arrangement.spacedBy(8.dp)
+    ) {
+        item { Spacer(modifier = Modifier.height(8.dp)) }
+        items(
+            items = stocks,
+            key = { it.symbol }
+        ) { stock ->
+            StockRowComposable(
+                stateReader = { stock },
+                onClick = { onStockClick(stock.symbol) }
+            )
+        }
+        item { Spacer(modifier = Modifier.height(8.dp)) }
+    }
+}
+
+
 @PreviewLightDark
 @Composable
 private fun StockListPreview() {
@@ -47,31 +74,5 @@ private fun StockListPreview() {
             },
             onStockClick = {}
         )
-    }
-}
-
-@Composable
-internal fun StockList(
-    stateReader: () -> FeedScreenState,
-    onStockClick: (String) -> Unit,
-    modifier: Modifier = Modifier
-) {
-    val stocks = stateReader.read { stocks }
-
-    LazyColumn(
-        modifier = modifier,
-        verticalArrangement = Arrangement.spacedBy(8.dp)
-    ) {
-        item { Spacer(modifier = Modifier.height(8.dp)) }
-        items(
-            items = stocks,
-            key = { it.symbol }
-        ) { stock ->
-            StockRowComposable(
-                stateReader = { stock },
-                onClick = { onStockClick(stock.symbol) }
-            )
-        }
-        item { Spacer(modifier = Modifier.height(8.dp)) }
     }
 }

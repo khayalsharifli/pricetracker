@@ -13,21 +13,6 @@ import az.khayalsharifli.presentation.ui.theme.PriceRed
 import az.khayalsharifli.presentation.ui.theme.PriceTrackerTheme
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 
-@PreviewLightDark
-@Composable
-private fun FeedToggleButtonActivePreview() {
-    PriceTrackerTheme {
-        FeedToggleButton(isFeedActive = true, onToggleFeed = {})
-    }
-}
-
-@PreviewLightDark
-@Composable
-private fun FeedToggleButtonInactivePreview() {
-    PriceTrackerTheme {
-        FeedToggleButton(isFeedActive = false, onToggleFeed = {})
-    }
-}
 
 @Composable
 internal fun FeedToggleButton(
@@ -45,5 +30,21 @@ internal fun FeedToggleButton(
             text = if (isFeedActive) "Stop" else "Start",
             color = Color.White
         )
+    }
+}
+
+@PreviewLightDark
+@Composable
+private fun FeedToggleButtonActivePreview() {
+    PriceTrackerTheme {
+        FeedToggleButton(isFeedActive = true, onToggleFeed = {})
+    }
+}
+
+@PreviewLightDark
+@Composable
+private fun FeedToggleButtonInactivePreview() {
+    PriceTrackerTheme {
+        FeedToggleButton(isFeedActive = false, onToggleFeed = {})
     }
 }

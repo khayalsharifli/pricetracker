@@ -22,36 +22,6 @@ import az.khayalsharifli.presentation.ui.theme.PriceGreen
 import az.khayalsharifli.presentation.ui.theme.PriceRed
 import az.khayalsharifli.presentation.ui.theme.PriceTrackerTheme
 
-@PreviewLightDark
-@Composable
-private fun ConnectionIndicatorConnectedPreview() {
-    PriceTrackerTheme {
-        ConnectionIndicatorComposable(
-            stateReader = { ConnectionIndicatorState(isConnected = true, label = "Connected") }
-        )
-    }
-}
-
-@PreviewLightDark
-@Composable
-private fun ConnectionIndicatorConnectingPreview() {
-    PriceTrackerTheme {
-        ConnectionIndicatorComposable(
-            stateReader = { ConnectionIndicatorState(isConnecting = true, label = "Connecting...") }
-        )
-    }
-}
-
-@PreviewLightDark
-@Composable
-private fun ConnectionIndicatorDisconnectedPreview() {
-    PriceTrackerTheme {
-        ConnectionIndicatorComposable(
-            stateReader = { ConnectionIndicatorState(label = "Offline") }
-        )
-    }
-}
-
 @Composable
 internal fun ConnectionIndicatorComposable(
     stateReader: () -> ConnectionIndicatorState,
@@ -82,6 +52,36 @@ internal fun ConnectionIndicatorComposable(
             text = label,
             style = MaterialTheme.typography.labelLarge,
             color = MaterialTheme.colorScheme.onSurface
+        )
+    }
+}
+
+@PreviewLightDark
+@Composable
+private fun ConnectionIndicatorConnectedPreview() {
+    PriceTrackerTheme {
+        ConnectionIndicatorComposable(
+            stateReader = { ConnectionIndicatorState(isConnected = true, label = "Connected") }
+        )
+    }
+}
+
+@PreviewLightDark
+@Composable
+private fun ConnectionIndicatorConnectingPreview() {
+    PriceTrackerTheme {
+        ConnectionIndicatorComposable(
+            stateReader = { ConnectionIndicatorState(isConnecting = true, label = "Connecting...") }
+        )
+    }
+}
+
+@PreviewLightDark
+@Composable
+private fun ConnectionIndicatorDisconnectedPreview() {
+    PriceTrackerTheme {
+        ConnectionIndicatorComposable(
+            stateReader = { ConnectionIndicatorState(label = "Offline") }
         )
     }
 }
