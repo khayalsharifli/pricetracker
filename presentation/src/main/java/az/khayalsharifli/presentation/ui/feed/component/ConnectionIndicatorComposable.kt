@@ -14,11 +14,43 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import az.khayalsharifli.presentation.base.read
 import az.khayalsharifli.presentation.ui.feed.mvi.ConnectionIndicatorState
 import az.khayalsharifli.presentation.ui.theme.PriceGreen
 import az.khayalsharifli.presentation.ui.theme.PriceRed
+import az.khayalsharifli.presentation.ui.theme.PriceTrackerTheme
+
+@PreviewLightDark
+@Composable
+private fun ConnectionIndicatorConnectedPreview() {
+    PriceTrackerTheme {
+        ConnectionIndicatorComposable(
+            stateReader = { ConnectionIndicatorState(isConnected = true, label = "Connected") }
+        )
+    }
+}
+
+@PreviewLightDark
+@Composable
+private fun ConnectionIndicatorConnectingPreview() {
+    PriceTrackerTheme {
+        ConnectionIndicatorComposable(
+            stateReader = { ConnectionIndicatorState(isConnecting = true, label = "Connecting...") }
+        )
+    }
+}
+
+@PreviewLightDark
+@Composable
+private fun ConnectionIndicatorDisconnectedPreview() {
+    PriceTrackerTheme {
+        ConnectionIndicatorComposable(
+            stateReader = { ConnectionIndicatorState(label = "Offline") }
+        )
+    }
+}
 
 @Composable
 internal fun ConnectionIndicatorComposable(

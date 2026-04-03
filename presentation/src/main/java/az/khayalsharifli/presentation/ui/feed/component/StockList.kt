@@ -10,6 +10,45 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import az.khayalsharifli.presentation.base.read
 import az.khayalsharifli.presentation.ui.feed.mvi.FeedScreenState
+import az.khayalsharifli.presentation.ui.feed.mvi.StockRowState
+import az.khayalsharifli.domain.model.PriceChange
+import az.khayalsharifli.presentation.ui.theme.PriceTrackerTheme
+import androidx.compose.ui.tooling.preview.PreviewLightDark
+import kotlinx.collections.immutable.persistentListOf
+
+@PreviewLightDark
+@Composable
+private fun StockListPreview() {
+    PriceTrackerTheme {
+        StockList(
+            stateReader = {
+                FeedScreenState(
+                    stocks = persistentListOf(
+                        StockRowState(
+                            symbol = "AAPL",
+                            name = "Apple Inc.",
+                            formattedPrice = "$185.92",
+                            priceChange = PriceChange.UP
+                        ),
+                        StockRowState(
+                            symbol = "GOOGL",
+                            name = "Alphabet Inc.",
+                            formattedPrice = "$141.50",
+                            priceChange = PriceChange.DOWN
+                        ),
+                        StockRowState(
+                            symbol = "MSFT",
+                            name = "Microsoft Corp.",
+                            formattedPrice = "$378.25",
+                            priceChange = PriceChange.NONE
+                        )
+                    )
+                )
+            },
+            onStockClick = {}
+        )
+    }
+}
 
 @Composable
 internal fun StockList(

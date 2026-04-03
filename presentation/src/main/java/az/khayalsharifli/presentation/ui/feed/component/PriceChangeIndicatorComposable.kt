@@ -7,6 +7,32 @@ import androidx.compose.ui.text.font.FontWeight
 import az.khayalsharifli.domain.model.PriceChange
 import az.khayalsharifli.presentation.ui.theme.PriceGreen
 import az.khayalsharifli.presentation.ui.theme.PriceRed
+import az.khayalsharifli.presentation.ui.theme.PriceTrackerTheme
+import androidx.compose.ui.tooling.preview.PreviewLightDark
+
+@PreviewLightDark
+@Composable
+private fun PriceChangeIndicatorUpPreview() {
+    PriceTrackerTheme {
+        PriceChangeIndicatorComposable(priceChange = PriceChange.UP)
+    }
+}
+
+@PreviewLightDark
+@Composable
+private fun PriceChangeIndicatorDownPreview() {
+    PriceTrackerTheme {
+        PriceChangeIndicatorComposable(priceChange = PriceChange.DOWN)
+    }
+}
+
+@PreviewLightDark
+@Composable
+private fun PriceChangeIndicatorNonePreview() {
+    PriceTrackerTheme {
+        PriceChangeIndicatorComposable(priceChange = PriceChange.NONE)
+    }
+}
 
 @Composable
 internal fun PriceChangeIndicatorComposable(
